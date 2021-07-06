@@ -22,22 +22,38 @@ namespace GradingStudents
 
         static List<int> gradingStudents(List<int> grades)
         {
-            List<int> resList = new List<int>();
             for (int i = 0; i < grades.Count; i++)
             {
                 if (grades[i] >= 38)
                 {
-                    var temp = (grades[i] / 5) + 1;
-                    var next5 = temp + 1 * 5;
-                    if (next5 - grades[i] <= 2)
-                        resList.Add(next5);
-                    else
-                        resList.Add(grades[i]);
+                    int dif = 5 - (grades[i] % 5);
+                    if (dif < 3)
+                    {
+                        grades[i] += dif;
+                    }
                 }
-                else resList.Add(grades[i]);
 
             }
-            return resList;
+
+            return grades;
+
+            //another method
+            //List<int> resList = new List<int>();
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if (grades[i] >= 38)
+            //    {
+            //        var temp = (grades[i] / 5) + 1;
+            //        var next5 = temp + 1 * 5;
+            //        if (next5 - grades[i] <= 2)
+            //            resList.Add(next5);
+            //        else
+            //            resList.Add(grades[i]);
+            //    }
+            //    else resList.Add(grades[i]);
+
+            //}
+            //return resList;
 
 
         }
